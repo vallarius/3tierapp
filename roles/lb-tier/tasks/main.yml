@@ -1,0 +1,25 @@
+---
+# tasks file for roles/lb-tier
+
+- name: Install HTTPie
+    yum:
+      name: "{{ web_pkg }}"
+      state: latest
+
+- name: Install LB
+    yum:
+      name: "{{ proxy_pkg }}"
+      state: latest
+
+- name: Enable LB
+    service:
+      name: "{{ proxy_pkg }}"
+      state: started
+      enabled: yes
+
+- name: Configure LB
+    template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+    notify:
+      - restart_LB

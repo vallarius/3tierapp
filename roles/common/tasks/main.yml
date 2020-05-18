@@ -1,0 +1,7 @@
+---
+# tasks file for roles/common
+- name: enable repos
+  template:
+    src: 3tierrepo.j2
+    dest: /etc/yum.repos.d/3tierapp.repo
+    mode: 0644

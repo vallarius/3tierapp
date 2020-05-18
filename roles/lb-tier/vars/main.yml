@@ -1,0 +1,4 @@
+---
+# vars file for roles/lb-tier
+    web_pkg: httpie
+    proxy_pkg: haproxy
